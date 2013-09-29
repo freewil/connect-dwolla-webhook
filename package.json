@@ -1,0 +1,19 @@
+{
+  "name": "connect-dwolla-webhook",
+  "version": "0.0.0",
+  "description": "connect middleware to verify dwolla webhook requests",
+  "keywords": [
+    "dwolla",
+    "webhook",
+    "connect"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sean Lavine",
+  "license": "BSD",
+  "dependencies": {
+    "scmp": "0.0.2"
+  }
+}
