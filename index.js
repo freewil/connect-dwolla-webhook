@@ -1,17 +1,17 @@
-var crypto = require('crypto');
 var scmp = require('scmp');
+var util = require('./util');
 
 module.exports = function dwollaWebhook(options) {
   var secret = options.secret || '';
   
   return function(req, res, next) {
-    var sig = req.headers['x-dwolla-signature'] || '';
-    var hash = crypto
-      .createHmac('sha1', secret)
-      .update(req.body)
-      .digest('hex');
-      
-    if (!scmp(sig, hash)) return res.send(403);
+    var actual = req.headers['x-dwolla-signature'] || '';
+    var expected = util.getSig(secret, req.body);
+    if (!scmp(actual, expected)) {
+      var err = new Error('Forbidden');
+      err.status = 403;
+      return next(err);
+    }
     
     next();
   };

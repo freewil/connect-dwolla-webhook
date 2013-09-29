@@ -9,7 +9,7 @@
   ],
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "author": "Sean Lavine",
   "license": "BSD",
@@ -17,6 +17,11 @@
     "scmp": "0.0.2"
   },
   "peerDependencies": {
+    "connect": "*"
+  },
+  "devDependencies": {
+    "mocha": "~1.13.0",
+    "request": "~2.27.0",
     "connect": "*"
   }
 }
