@@ -6,8 +6,11 @@ module.exports = function dwollaWebhook(options) {
   
   return function(req, res, next) {
     var sig = req.headers['x-dwolla-signature'] || '';
-    var hash = crypto.createHmac('sha1', secret).update(body).digest('hex');
-    
+    var hash = crypto
+      .createHmac('sha1', secret)
+      .update(req.body)
+      .digest('hex');
+      
     if (!scmp(sig, hash)) return res.send(403);
     
     next();
