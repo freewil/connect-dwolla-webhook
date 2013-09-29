@@ -7,6 +7,10 @@
     "webhook",
     "connect"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/freewil/connect-dwolla-webhook.git"
+  },
   "main": "index.js",
   "scripts": {
     "test": "mocha"
