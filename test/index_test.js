@@ -44,7 +44,7 @@ describe('connect-dwolla-webhook', function() {
     var signature = util.getSig(VALID_SECRET, data);
     post({
       uri: 'http://localhost:3000/',
-      form: data,
+      json: data,
       headers: {
         'X-Dwolla-Signature': signature
       }
@@ -68,14 +68,14 @@ describe('connect-dwolla-webhook', function() {
     var signature = util.getSig(INVALID_SECRET, data);
     post({
       uri: 'http://localhost:3000/',
-      form: data,
+      json: data,
       headers: {
         'X-Dwolla-Signature': signature
       }
     }, function(err, res, body) {
       assert.ifError(err);
       assert.equal(403, res.statusCode);
-      assert.equal('', body);
+      assert.equal(undefined, body);
       done();
     });
   });

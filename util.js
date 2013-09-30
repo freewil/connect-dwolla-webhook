@@ -1,9 +1,14 @@
 var crypto = require('crypto');
-var stringify = require('querystring').stringify;
 
 module.exports.getSig = function(secret, data) {
   return crypto
     .createHmac('sha1', secret)
-    .update(stringify(data))
+    .update(JSON.stringify(data))
     .digest('hex');
+};
+
+module.exports.forbidden = function() {
+  var err = new Error('Forbidden');
+  err.status = 403;
+  return err;
 };
